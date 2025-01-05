@@ -7,13 +7,20 @@ const public_users = express.Router();
 
 public_users.post("/register", (req,res) => {
   //Write your code here
+  
+  // const { username , password } = req.body;
+  // const matchingUser = users.filter(user => user === username );
+
+  // if (!matchingUser) {
+
+  // }
   return res.status(300).json({message: "Yet to be implemented"});
 });
 
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
-  //Write your code here
-  return res.status(300).json({message: "Yet to be implemented"});
+  res.send(JSON.stringify(books));
+  return res.status(201).json({message: "Books successfully printed"});
 });
 
 // Get book details based on ISBN
