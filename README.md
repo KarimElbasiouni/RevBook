@@ -98,7 +98,6 @@ The following npm packages are used in this project:
 - `jsonwebtoken`: For generating and verifying JWT tokens.
 - `axios`: For making HTTP requests.
 - `express-session`: For managing user sessions.
-- 
 ```
 ├── axios@1.7.9
 ├── express-session@1.18.1
