@@ -10,6 +10,14 @@ This is a Node.js and Express-based server-side application for managing book re
   - Adding and deleting book reviews.
 - Modular and scalable code structure.
 
+## Technologies
+- **Node.js**: Server-side JavaScript runtime
+- **Express.js**: Web application framework for Node.js
+- **JWT (JSON Web Tokens)**: Secure authentication mechanism
+- **Express-session**: Session management middleware
+- **Axios**: Promise-based HTTP client for making API requests
+- **Nodemon**: Development utility for auto-restarting the server
+
 ## Prerequisites
 Ensure you have the following installed on your machine:
 - [Node.js](https://nodejs.org/) (v16 or later recommended)
@@ -109,5 +117,3 @@ The following npm packages are used in this project:
 ## Notes
 - The `node_modules` directory is excluded from version control and should not be pushed to the repository.
 - All API responses are in JSON format.
-
->>>>>>> e4275a28e33a59cfe39f756fc8cbe23f2dccb682
