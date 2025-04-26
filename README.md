@@ -1,88 +1,113 @@
-# RevBook - Online Bookshop API
+# Book Review Application
 
-## Overview
-RevBook is a RESTful API for an online bookshop, built with Node.js and Express. It provides endpoints for browsing books, managing user accounts, and submitting book reviews.
+This is a Node.js and Express-based server-side application for managing book reviews. The application features a REST API for user registration, authentication, and handling book-related operations such as fetching book details, adding reviews, and more.
 
-## Technologies Used
-- **Node.js**: Runtime environment
-- **Express.js**: Web framework
-- **JWT (jsonwebtoken)**: Authentication and authorization
-- **Express-session**: Session management
-- **Axios**: HTTP client for making requests
-- **Nodemon**: Development dependency for auto-restarting the server
+## Features
+- User registration and session-based authentication using JWT (JSON Web Tokens).
+- REST API endpoints for:
+  - Retrieving the book catalog.
+  - Fetching book details by ISBN, title, or author.
+  - Adding and deleting book reviews.
+- Modular and scalable code structure.
+
+## Prerequisites
+Ensure you have the following installed on your machine:
+- [Node.js](https://nodejs.org/) (v16 or later recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Git](https://git-scm.com/)
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/KarimElbasiouni/RevBook.git
+   cd RevBook/final_project
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the server:
+   ```bash
+   node index.js
+   ```
+
+4. The server will be running on `http://localhost:5000`.
+
+## API Endpoints
+### Public Endpoints
+1. **Register a New User**
+   - **POST** `/register`
+   - Request Body:
+     ```json
+     {
+       "username": "your-username",
+       "password": "your-password"
+     }
+     ```
+
+2. **Get All Books**
+   - **GET** `/`
+
+3. **Get Book Details by ISBN**
+   - **GET** `/isbn/:isbn`
+
+4. **Get Book Details by Author**
+   - **GET** `/author/:author`
+
+5. **Get Book Details by Title**
+   - **GET** `/title/:title`
+
+6. **Get Book Reviews**
+   - **GET** `/review/:isbn`
+
+### Protected Endpoints (Authentication Required)
+1. **Login**
+   - **POST** `/customer/login`
+   - Request Body:
+     ```json
+     {
+       "username": "your-username",
+       "password": "your-password"
+     }
+     ```
+
+2. **Add a Book Review**
+   - **PUT** `/customer/auth/review/:isbn?review=YourReview`
+
+3. **Delete a Book Review**
+   - **DELETE** `/customer/auth/review/:isbn`
 
 ## Project Structure
 ```
-final_project/
-├── index.js              # Entry point & server configuration
-├── package.json          # Project metadata & dependencies
-├── router/
-│   ├── auth_users.js     # Authentication routes & logic
-│   ├── booksdb.js        # Book database
-│   └── general.js        # Public routes
+.
+├── node_modules/           # Installed dependencies (ignored in .gitignore)
+├── router
+│   ├── auth_users.js       # Routes and logic for authenticated users
+│   ├── booksdb.js          # Book database
+│   ├── general.js          # General (public) routes
+├── index.js               # Main server file
+├── package.json            # Project dependencies
+└──  README.md               # Project documentation
 ```
 
-## Features
-- **User Authentication**
-  - User registration
-  - User login with JWT
-  - Session management
+## Dependencies
+The following npm packages are used in this project:
+- `express`: Web framework for Node.js.
+- `jsonwebtoken`: For generating and verifying JWT tokens.
+- `axios`: For making HTTP requests.
+- `express-session`: For managing user sessions.
+```
+├── axios@1.7.9
+├── express-session@1.18.1
+├── express@4.21.2
+├── jsonwebtoken@9.0.2
+└── nodemon@3.1.9
+```
 
-- **Book Management**
-  - Browse complete book catalog
-  - Search books by ISBN
-  - Search books by author
-  - Search books by title
+## Notes
+- The `node_modules` directory is excluded from version control and should not be pushed to the repository.
+- All API responses are in JSON format.
 
-- **Review System**
-  - Add reviews to books (authenticated users only)
-  - Delete reviews (authenticated users only)
-  - View book reviews
-
-## API Endpoints
-
-### Public Endpoints
-- `POST /register` - Register a new user
-- `GET /` - Get all books
-- `GET /isbn/:isbn` - Get book by ISBN
-- `GET /author/:author` - Get book by author
-- `GET /title/:title` - Get book by title
-- `GET /review/:isbn` - Get reviews for a book
-
-### Authenticated Endpoints
-- `POST /customer/login` - User login
-- `PUT /customer/auth/review/:isbn` - Add a book review
-- `DELETE /customer/auth/review/:isbn` - Delete a book review
-
-## Authentication Flow
-The application uses JWT (JSON Web Tokens) for authentication:
-1. Users register with a username and password
-2. Upon login, a JWT token is generated and stored in the session
-3. Protected routes verify the token before granting access
-4. The token expires after 1 hour
-
-## Data Structure
-- **Users**: Array of user objects with username and password
-- **Books**: Object with ISBN as keys and book details as values
-  - Each book contains: author, title, and reviews
-  - Reviews are stored as an object with username as keys
-
-## Setup and Installation
-1. Clone the repository
-2. Install dependencies:
-   ```
-   cd final_project
-   npm install
-   ```
-3. Start the server:
-   ```
-   npm start
-   ```
-4. The server will run on `http://localhost:5000`
-
-## Development
-- The server uses Nodemon to automatically restart when files are changed
-- APIs are structured in a modular way for maintainability
-
-## License
-This project is licensed under the MIT License.
+>>>>>>> e4275a28e33a59cfe39f756fc8cbe23f2dccb682
